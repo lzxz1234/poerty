@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+					</button> <a class="navbar-brand" href="#">宋词库</a>
+				</div>
+
+				<div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
+					<form class="navbar-form navbar-left" role="search" action="/ci">
+						<div class="form-group">
+							<input class="form-control" type="text" id="key" name="key" value="{{ key }}"/>
+						</div>
+						<button class="btn btn-default" type="submit">
+							搜索
+						</button>
+                        <input name="size" id="size" type="hidden" value="{{ size }}">
+                        <input name="page" id="page" type="hidden" value="{{ page }}">
+					</form>
+				</div>
+
+			</nav>
+            {% for ci in list %}
+			<h3>{{ ci.rhythmic }} - {{ ci.author }}</h3>
+			<p>{{ ci.content }}</p>
+            {% endfor %}
+		</div>
+	</div>
+    <div class="row">
+        <ul id="pager"></ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script type='text/javascript'>
+        var options = {
+                bootstrapMajorVersion: 3,
+                currentPage: {{ page }},
+                totalPages: {{ pages }},
+                numberOfPages: 10,
+                useBootstrapTooltip: true,
+                alignment:'center',
+                onPageClicked: function(e, event, type, page) {
+                    $("#page").val(page);
+                    $("form").submit();
+                },
+            };
+        $('#pager').bootstrapPaginator(options);
+    </script>
+{% endblock %}
