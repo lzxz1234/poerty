@@ -8,7 +8,7 @@
 				<div class="navbar-header">
 					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-					</button> <a class="navbar-brand" href="#">唐诗库</a>
+					</button> <a class="navbar-brand" href="/shi">唐诗库</a>
 				</div>
 
 				<div class="collapse navbar-collapse pull-right" id="bs-example-navbar-collapse-1">
@@ -16,7 +16,7 @@
 						<div class="form-group">
 							<input class="form-control" type="text" id="key" name="key" value="{{ key }}"/>
 						</div>
-						<button class="btn btn-default" type="submit">
+						<button class="btn btn-default" type="submit" onclick="javascript: $('#page').val(1);">
 							搜索
 						</button>
                         <input name="size" id="size" type="hidden" value="{{ size }}">
