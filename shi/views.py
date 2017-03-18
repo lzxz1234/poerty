@@ -8,7 +8,7 @@ from django.template.loader import get_template
 
 
 def shi(request):
-    key = request.GET.get('key')
+    key = request.GET.get('key', '')
     page = int(request.GET.get('page') if request.GET.get('page') else '1')
     size = int(request.GET.get('size') if request.GET.get('size') else '10')
     t = get_template('shi.html')
